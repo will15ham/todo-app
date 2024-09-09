@@ -12,10 +12,12 @@ import { ProfileForm } from "./form";
 
 export default async function AuthPage() {
   const supabase = createClient();
-  const { data } = await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
-  if (!data?.user) {
-    redirect("/login");
+  if (!user) {
+    redirect("/auth/login");
   }
 
   return (
@@ -28,7 +30,7 @@ export default async function AuthPage() {
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          <p>Logged in as: {data.user.email}</p>
+          <p>Logged in as: {user.email}</p>
         </CardContent>
         <CardFooter className="flex flex-col space-y-4">
           <ProfileForm />

@@ -2,7 +2,8 @@
 
 import { Button } from "@/components/ui/button";
 import { redirectToDashboard } from "./actions";
-import { signOut } from "../login/actions";
+import { signOut } from "../auth/actions";
+import { SubmitButton } from "@/components/loading-spinner";
 
 export function ProfileForm() {
   return (
@@ -13,9 +14,7 @@ export function ProfileForm() {
         </Button>
       </form>
       <form action={signOut} className="w-full">
-        <Button variant="default" className="w-full">
-          Sign Out
-        </Button>
+        <SubmitButton>Sign Out</SubmitButton>
       </form>
     </>
   );

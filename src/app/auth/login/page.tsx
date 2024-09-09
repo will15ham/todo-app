@@ -5,8 +5,11 @@ import { redirect } from "next/navigation";
 export default async function AuthPage() {
   const supabase = createClient();
 
-  const { data } = await supabase.auth.getUser();
-  if (data?.user) {
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (user) {
     redirect("/profile");
   }
 

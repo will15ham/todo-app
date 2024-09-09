@@ -1,5 +1,3 @@
-// import { createClient } from "@/utils/supabase/server";
-// import { redirect } from "next/navigation";
 import Auth from "./form";
 
 export default async function AuthPage() {

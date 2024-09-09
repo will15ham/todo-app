@@ -10,11 +10,11 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { SubmitButton } from "@/components/loading-spinner";
-import { updateUserPassword } from "../login/actions";
 import { redirect } from "next/navigation";
-import { PasswordInput } from "../login/form";
+import { updateUserPassword } from "../actions";
+import { PasswordInput } from "../components/auth";
 
-function AuthForm() {
+const UpdatePasswordForm = () => {
   const { toast } = useToast();
 
   async function handleSubmit(formData: FormData) {
@@ -26,7 +26,7 @@ function AuthForm() {
         variant: "destructive",
       });
     } else {
-      redirect("/login");
+      redirect("/auth/login");
     }
   }
 
@@ -49,16 +49,16 @@ function AuthForm() {
       </CardFooter>
     </form>
   );
-}
+};
 
-export default function Auth() {
+export default function UpdatePassword() {
   return (
     <Card className="w-full max-w-md">
       <CardHeader className="space-y-1">
         <CardTitle className="text-2xl font-bold">Reset Password</CardTitle>
         <CardDescription>Enter your new password</CardDescription>
       </CardHeader>
-      <AuthForm />
+      <UpdatePasswordForm />
     </Card>
   );
 }
